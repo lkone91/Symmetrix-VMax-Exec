@@ -154,13 +154,13 @@ class MigrateMode(AuditMode):
             if self.array_type is 3 and self.rmt_array_type is 12:
                 mprint('Migratation to VMAX-2 from VMAX-2 not Available', 'err', logger=self.logger)
                 
-            # Vérif Warning Existant (Source) #
+            # Verif Warning Existant (Source) #
             
             if any([l.warning for l in self.lun_cls_lst]):
                 lun_display(self.sid, self.lun_cls_lst, self.array_type, war_type='Unbind/Reclaim/N.Ready', word=' [Local]', size_display=self.size_display, debug=self.debug_mode)
                 mprint('Source Lun(s) Not Valid', 'err', logger=self.logger)
                 
-            # Vérif GK Existant (Source) #
+            # Verif GK Existant (Source) #
             
             if gate_keep_check(self.lun_cls_lst):
                 self.warning_dict[self.warning_id_incr] = 'Gate Keeper Detected on Source Lun(s). Script will not Take Them'
@@ -171,7 +171,7 @@ class MigrateMode(AuditMode):
             
             self.local_lun_id_by_size = [l.id for l in sorted(self.lun_cls_lst, key=attrgetter('size', 'type'), reverse=True) if not l.gkeeper]
             
-            # Vérif SRDF Existant (Source) #
+            # Verif SRDF Existant (Source) #
             
             lun_with_srdf_lst, r1_check, r2_check = lun_with_srdf_check(self.lun_cls_lst)
             
@@ -183,14 +183,14 @@ class MigrateMode(AuditMode):
                 
             if self.mig_type == 'SRDF':
                 
-                # Vérif SRDF Capable Existant (Source) #
+                # Verif SRDF Capable Existant (Source) #
                 
                 self.lun_with_no_srdf_flag = [l.id for l in self.lun_cls_lst if not l.gkeeper and not l.srdf_cap]
                 
                 if self.lun_with_no_srdf_flag:
                     self.warning_dict[self.warning_id_incr] = 'Source Lun(s) {0} with No SRDF Flag. Script Add it'.format(self.lun_with_no_srdf_flag)
                    
-                # Vérif RA Group #
+                # Verif RA Group #
                 
                 self.ra_cls_lst = ra_group_retrieve(self.array_id, self.rmt_array_id, logger=self.logger, export=self.export)
                 
@@ -204,13 +204,13 @@ class MigrateMode(AuditMode):
                 
                 self.rmt_lun_by_type_lst, rmt_lun_by_type_conv_lst = lun_by_type_migrate_fmt(self.rmt_lun_cls_lst, self.rmt_array_type, self.array_type)
                 
-                # Vérif Warning Existant (Cible) #
+                # Verif Warning Existant (Cible) #
                 
                 if any([l.warning for l in self.rmt_lun_cls_lst]):
                     lun_display(self.sid, self.rmt_lun_cls_lst, self.rmt_array_type, war_type='Unbind/Reclaim/N.Ready', size_display=self.size_display, word=' [Remote]', debug=self.debug_mode)
                     mprint('Target Lun(s) Not Valid', 'err', logger=self.logger)
                     
-                # Vérif GK Existant (Cible) #
+                # Verif GK Existant (Cible) #
                 
                 if gate_keep_check(self.rmt_lun_cls_lst):
                     self.warning_dict[self.warning_id_incr] = 'Gate Keeper Detected on Target Lun(s). Script will not Take Them'
@@ -220,7 +220,7 @@ class MigrateMode(AuditMode):
                 
                 self.rmt_lun_id_by_size = [l.id for l in sorted(self.rmt_lun_cls_lst, key=attrgetter('size', 'type'), reverse=True) if not l.gkeeper]
                 
-                # Vérif correspondance entre Lun Soure et Cible
+                # Verif correspondance entre Lun Soure et Cible
                 
                 if len(self.lun_by_type_lst) != len(self.rmt_lun_by_type_lst):
                     mprint('Bad Count of Lun(s) Between Source and Target', 'err')
@@ -228,7 +228,7 @@ class MigrateMode(AuditMode):
                 if lun_by_type_conv_lst != rmt_lun_by_type_conv_lst:
                     self.error_dict[self.error_id_incr] = 'Source and Target Lun(s) Mismatch'
                     
-                # Vérif SRDF Existant (Cible) #
+                # Verif SRDF Existant (Cible) #
                     
                 rmt_lun_with_srdf_lst, r1_check, r2_check = lun_with_srdf_check(self.rmt_lun_cls_lst)
                     
@@ -237,14 +237,14 @@ class MigrateMode(AuditMode):
                    
                 if self.mig_type == 'SRDF':
                    
-                    # Vérif SRDF Capable Existant (Source) #
+                    # Verif SRDF Capable Existant (Source) #
                     
                     self.rmt_lun_with_no_srdf_flag = [l.id for l in self.rmt_lun_cls_lst if not l.gkeeper and not l.srdf_cap]
                     
                     if self.rmt_lun_with_no_srdf_flag:
                         self.warning_dict[self.warning_id_incr] = 'Target Lun(s) {0} with No SRDF Flag. Script Add it'.format(self.rmt_lun_with_no_srdf_flag)
                    
-                # Vérif Espace Alloué sur Lun Cible #
+                # Verif Espace Alloue sur Lun Cible #
                    
                 rmt_lun_allocate_lst = [l.id for l in self.rmt_lun_cls_lst if l.allocate > 0]
                 
@@ -288,7 +288,7 @@ class MigrateMode(AuditMode):
             
             vlun_check = 0
             
-            # Récupération Session existante #
+            # Recuperation Session existante #
             
             vlun_session_lst, vlun_device_lst = vlun_all_vol_session_retrieve(self.sid, logger=self.logger)
             

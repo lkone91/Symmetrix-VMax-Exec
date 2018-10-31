@@ -41,7 +41,7 @@ class RemoveMode(AuditMode):
         if not self.rmv_repli and not self.unbind_mode and not self.noport_mode:
             self.force_mode = True
         
-        # Vérification existence S.Group Temporaire ###
+        # Verification existence S.Group Temporaire ###
             
         if self.array_type is 12:
             self.sg_temp_name = 'vmax_exec_week_{0}_temp_SG'.format(time.strftime("%V"))
@@ -142,7 +142,7 @@ class RemoveMode(AuditMode):
             if not [l for l in self.lun_cls_lst if l.remove]:
                 self.error_dict[self.error_id_incr] = 'No Lun(s) to Delete'
             
-        # Vérification Device #
+        # Verification Device #
             
         if self.force_mode:
             
@@ -150,7 +150,7 @@ class RemoveMode(AuditMode):
             
             if self.dev == 'dev_lun':
                 
-                # Vérification Multi S.Group (-lun) #
+                # Verification Multi S.Group (-lun) #
                 
                 sgroups_list = rtr_dict_list(self.lun_cls_lst, 'sgroup_list_fmt', True, join=True)
                 
@@ -226,7 +226,7 @@ class RemoveMode(AuditMode):
                         if not l.sgroup:
                             l.remove = True
                     
-                # Vérification S.Group Vide #
+                # Verification S.Group Vide #
                 
                 for sgroup in self.sgroup_cls_lst:
                     
@@ -247,7 +247,7 @@ class RemoveMode(AuditMode):
                     if self.login_lst:
                         self.login_cls_lst = login_info_retrieve(self.login_lst, self.sid, logger=self.logger)
 
-            # Vérification Multi S.Group (-sg) #
+            # Verification Multi S.Group (-sg) #
             
             if self.dev == 'dev_sg':
                 
@@ -286,7 +286,7 @@ class RemoveMode(AuditMode):
                                 if lun in no_shared_lun_list:
                                     sgroup.remove_lun.append(lun)
             
-            # Vérification Cascade S.Group #
+            # Verification Cascade S.Group #
                    
             for sgroup in self.sgroup_cls_lst:
                 
@@ -299,7 +299,7 @@ class RemoveMode(AuditMode):
                         sgroup.remove = True
                     
                     
-            # Vérification Multi Init #
+            # Verification Multi Init #
             
             if [s for s in self.sgroup_cls_lst if s.remove and s.view]:
                 
@@ -345,7 +345,7 @@ class RemoveMode(AuditMode):
                 if shared_ig_list:
                     self.warning_dict[self.warning_id_incr] = 'Shared IG {0} not Remove'.format(list(set(shared_ig_list)))
         
-                # Vérification Status Logins #
+                # Verification Status Logins #
                 
                 no_shared_login_list = list(set(no_shared_login_list))
                 
@@ -409,7 +409,7 @@ class RemoveMode(AuditMode):
         create_sgtmp = []
         move_lun_to_sgtmp = []
         
-        # Vérification / Récupération Réplication #
+        # Verification / Recuperation Replication #
         
         srdf_dic_lst = []
         clone_all_dic_lst = []
@@ -433,7 +433,7 @@ class RemoveMode(AuditMode):
             if srdf_dic_lst:
                 self.warning_dict[self.warning_id_incr] = 'Lun(s) with SRDF, Script Delete Pair(s)'
                 
-                # Vérification Réplication SRDF #
+                # Verification Replication SRDF #
                 
                 if any([s['pair_state'] == 'SyncInProg' for s in srdf_dic_lst]):
                     self.error_dict[self.error_id_incr] = "Luns Pair(s) on 'Sync In Progress' State"

@@ -241,7 +241,7 @@ def lun_lst_retrieve(sid, lun_type='', display=True, dev_lst=[], logger=False, e
     return lun_dic_lst
 
 def lun_free_lst_retrieve(sid, lun_lst, logger=False, export='Local'):
-    """ Fonction : Recupération des luns bindé après un free all """
+    """ Fonction : Recuperation des luns binde apres un free all """
     
     cmd_lun_tree = cmd_retrieve('symcfg -sid {0} list -tdev -dev {1} -output xml'.format(sid, ','.join(lun_lst)), 0, 1, display=False, logger=logger, export=export)
     

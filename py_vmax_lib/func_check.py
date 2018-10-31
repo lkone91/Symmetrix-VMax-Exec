@@ -473,7 +473,7 @@ def generate_ig_mv_login(wwn_dic_lst, nview_dic_lst, login_cls_lst, node, new_na
     
     for wwn_dic in wwn_dic_lst:
         
-        # Genération des IG/MV #
+        # GenA(C)ration des IG/MV #
         
         wwn_dic['port'] = rtr_dict_list(login_cls_lst, 'port_enable_dir_prt_list', uniq=True, concat=True, filter='wwn:{0}'.format(wwn_dic['name']))    
         wwn_dic['port_logged'] = rtr_dict_list(login_cls_lst, 'port_logged_dir_prt_list', uniq=True, concat=True, filter='wwn:{0}'.format(wwn_dic['name']))    
@@ -513,7 +513,7 @@ def generate_ig_mv_login(wwn_dic_lst, nview_dic_lst, login_cls_lst, node, new_na
                 if wwn_dic['exist_ig_name']:
                     wwn_dic['ig_name'] = wwn_dic['exist_ig_name']
                  
-        # Genération de l'enregistrement des Logins #
+        # GenA(C)ration de l'enregistrement des Logins #
                     
         npiv = ''            
                     

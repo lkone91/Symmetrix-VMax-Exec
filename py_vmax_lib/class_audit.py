@@ -26,7 +26,7 @@ class AuditMode(object):
         self.logger = logger
         
     def info_retrieve(self):
-        """ Récupération des informations sur les Devices """
+        """ Recuperation des informations sur les Devices """
         
         self.lun_cls_lst = []
         self.sgroup_cls_lst = []

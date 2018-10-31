@@ -72,7 +72,7 @@ class GlobalMode(object):
         self.array_type = False
         self.size_display = self.size_display_arg.lower()
         
-        ### Récupération Information Baies (JSON) ###
+        ### RA(C)cupA(C)ration Information Baies (JSON) ###
                 
         self.array_dic_lst = list_array_file(self.conf_path)        
         
@@ -98,7 +98,7 @@ class GlobalMode(object):
         if self.sl:
             self.sid, self.array_id, self.array_type, self.one_view, self.export = array_id_check(self.array_dic_lst)
             
-        ### Vérification des Arguments ###
+        ### VA(C)rification des Arguments ###
         
         if not self.sid:
             mprint('SID Array Needed', 'arg_err')

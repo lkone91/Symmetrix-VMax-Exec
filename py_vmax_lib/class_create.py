@@ -51,11 +51,11 @@ class CreateMode(AuditMode):
         
         self.login_cls_lst = []
         
-        # Vérification des nouveaux Luns en argument #
+        # VA(C)rification des nouveaux Luns en argument #
         
         if self.new_lun:
             
-            # Vérification Taille #
+            # VA(C)rification Taille #
             
             check = 1
             
@@ -179,7 +179,7 @@ class CreateMode(AuditMode):
                     
         if self.select: mprint()
         
-        # Vérif SG Existant #
+        # VA(C)rif SG Existant #
         
         if self.dev_sg:
             
@@ -217,7 +217,7 @@ class CreateMode(AuditMode):
                     
             if check is 1: mprint()
                     
-        # Vérif Nouveau SG #
+        # VA(C)rif Nouveau SG #
         
         if self.select and self.new_view:
             cluster = text_input('Create New Cluster ?', '[Yes|No]', out_type='bool')
@@ -250,7 +250,7 @@ class CreateMode(AuditMode):
                 export=self.export
             )
             
-        # Vérif Nouvelle MV [Select] #
+        # VA(C)rif Nouvelle MV [Select] #
         
         if self.new_view:
             check = 1
@@ -341,7 +341,7 @@ class CreateMode(AuditMode):
                 
             self.nview_dic_lst = []
             
-            # Vérif Syntaxe/WWN #
+            # VA(C)rif Syntaxe/WWN #
             
             if self.node > 1:
                  
@@ -380,7 +380,7 @@ class CreateMode(AuditMode):
             for nview_dic in self.nview_dic_lst:
                 self.wwn_list = self.wwn_list + nview_dic['wwn_list']
                 
-            # Vérif Login #
+            # VA(C)rif Login #
                 
             self.login_cls_lst = [login for login in login_info_retrieve(self.wwn_list, self.sid, export=self.export)]
             
@@ -471,7 +471,7 @@ class CreateMode(AuditMode):
                 login_display(self.sid, self.login_cls_lst, debug=self.debug_mode)
                 mprint('Login(s) {0} not Connected on Fabric'.format(login_no_onfab_lst), 'err') 
                 
-            # Genération des IG/MV #
+            # GenA(C)ration des IG/MV #
             
             self.mv_all_lst = view_lst_retrieve(self.sid, logger=self.logger, export=self.export)
             self.login_all_dic_lst = login_lst_retrieve(self.sid, logger=self.logger, export=self.export)
@@ -506,7 +506,7 @@ class CreateMode(AuditMode):
             
             debug_fmt(self.debug_mode, self.wwn_dic_lst)
             
-            # Vérif PG #
+            # VA(C)rif PG #
             
             self.port_cls_lst = [p for p in port_group_retrieving(self.sid, export=self.export)]
             
@@ -690,7 +690,7 @@ class CreateMode(AuditMode):
         add_wwn_to_ig = []
         add_fast_to_sg = []
         
-        # Création MV #
+        # CrA(C)ation MV #
         
         cons_lun = ''
         
@@ -718,7 +718,7 @@ class CreateMode(AuditMode):
                 else:
                     create_mv.append('symaccess -sid {0} create view -name {1} -ig {2} -sg {3} -pg {4}'.format(self.sid, wwn_dic['mv_name'], wwn_dic['ig_name'], self.sgroup, wwn_dic['pg']))
                 
-        # Création Lun #
+        # CrA(C)ation Lun #
         
         if self.new_lun:
             
@@ -742,7 +742,7 @@ class CreateMode(AuditMode):
             
             add_lun_to_sg.append('symaccess -sid {0} add -name {1} -type storage dev {2}'.format(self.sid, self.sgroup, '[New Device]'))
         
-        # Création SG #
+        # CrA(C)ation SG #
         
         if self.new_sg:
             if self.array_type == 12:
