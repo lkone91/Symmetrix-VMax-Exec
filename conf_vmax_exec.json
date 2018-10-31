@@ -1,0 +1,12 @@
+{
+        "PATH": "/path/to/script",
+        "LOG":
+        {
+                "PATH": "/path/to/log"
+        },
+        "TMP":
+        {
+                "PATH": "/path/to/tmp"
+        }
+}
+
