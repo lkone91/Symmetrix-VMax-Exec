@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 #
 #---------------------------------------------------------------------------
-# Script    : vmax_exec.py                                                 |
+# Script    : vmax_utils.py                                                |
 # Author    : L.Koné                                                       |
-# Language  : Pyhton 2                                                     |
+# Language  : Pyhton 2.6                                                   |
 # Lib Dir   : ./py_vmax_lib                                                |
 # Version   : v1.01                                                        |
 # Date      : 03/10/2017                                                   |
@@ -49,7 +49,7 @@ DEV_MODE = False
 
 # Liste des utilisateurs authorisé à executer le script #
 
-AUTH_USER_LST = ['root', 'admvmax']
+AUTH_USER_LST = ['root', 'vmax_user']
 
 #==============================================================================#
 # ------------------------------- MODULE START ------------------------------- #
