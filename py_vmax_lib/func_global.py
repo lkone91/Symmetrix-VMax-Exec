@@ -29,7 +29,7 @@ from operator import attrgetter, itemgetter
 def config_exec(config_path):
     """ Fonction : Recuperation du fichier de configuration au format JSON """
     
-    conf_file = config_path + '/conf_vmax_exec.json'
+    conf_file = config_path + '/conf_vmax_utils.json'
     
     try:
         with open(conf_file, 'r') as json_f:
@@ -72,7 +72,7 @@ def logger_exec(user, sid, mode, session_id, debug_mode=False, log_path='.', dev
     import logging
     from logging.handlers import RotatingFileHandler
     
-    log_path = log_path + '/log_vmax_exec.d' 
+    log_path = log_path + '/log_vmax_utils.d' 
     
     if not os.path.isdir(log_path):
         try:
@@ -80,7 +80,7 @@ def logger_exec(user, sid, mode, session_id, debug_mode=False, log_path='.', dev
         except OSError:
             mprint('Log Dir Creation Error', 'cri', no_end=True)
     
-    log_file = '{0}/log_vmax_exec.log'.format(log_path)
+    log_file = '{0}/log_vmax_utils.log'.format(log_path)
     
     def mode_retrieve_case(m):
         return {'remove': 'RMV', 'audit': 'AUD', 'create': 'CRT', 'modify': 'MDF', 'select':'SLC', 'migrate':'MIG'}[m]
@@ -199,7 +199,7 @@ def mprint(
     
     if mode == 'n': result = '{0}{1}'.format(marge, text)
     elif mode == 'n2': result = '{0} \033[7m {1} \033[0m'.format(marge, text)
-    elif mode == 's1': result = '{0} o-> Vmax.Exec {1} [{2}][{3}] <-o'.format(marge, text, d, t)
+    elif mode == 's1': result = '{0} o-> Vmax.Utils {1} [{2}][{3}] <-o'.format(marge, text, d, t)
     elif mode == 'd1': result = '{0}[{1}] {2}'.format(marge, t, text)
     elif mode == 'd2': result = '{0}[{1}][{2}] {3}'.format(marge, d, t, text)
     elif mode == 't1': result = '{0}{1}\n{2}{3}'.format(marge, text, mrg, '.'*40) 

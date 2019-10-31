@@ -44,10 +44,10 @@ class RemoveMode(AuditMode):
         # Verification existence S.Group Temporaire ###
             
         if self.array_type is 12:
-            self.sg_temp_name = 'vmax_exec_week_{0}_temp_SG'.format(time.strftime("%V"))
+            self.sg_temp_name = 'vmax_utils_week_{0}_temp_SG'.format(time.strftime("%V"))
             
         elif self.array_type is 3:
-            self.sg_temp_name = 'SG_vmax_exec_week_{0}_temp'.format(time.strftime("%V"))
+            self.sg_temp_name = 'SG_vmax_utils_week_{0}_temp'.format(time.strftime("%V"))
         
         self.sg_temp = exist_check([self.sg_temp_name], self.sg_all_lst)
         

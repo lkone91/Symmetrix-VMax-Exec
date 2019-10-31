@@ -174,7 +174,7 @@ def sgroup_tmp_retrieve(sid, array_type, week_nb, logger=False, export='Local'):
     result = []
     
     sg_all_lst, ig_all_lst = sg_ig_lst_retrieve(sid, export=export)
-    sgtmp_list = [s for s in sg_all_lst if re.search(r'(SG_|^)vmax_exec_week_[0-9]+_temp(_SG|$)', s)]
+    sgtmp_list = [s for s in sg_all_lst if re.search(r'(SG_|^)vmax_utils_week_[0-9]+_temp(_SG|$)', s)]
     
     if sgtmp_list:
         date_cur = datetime.date.today()
